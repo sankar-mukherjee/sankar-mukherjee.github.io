@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f74f9505-2d56-49ad-98d1-9691a2d687f5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1br6USi5yfYNf5tqSegfFh2hVWK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f74f9505-2d56-49ad-98d1-9691a2d687f5" name="Default Changelist" comment="" />
+      <created>1589377880544</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589377880544</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1203" y="272" width="447" height="513" key="FileChooserDialogImpl" timestamp="1589378341805">
+      <screen x="0" y="27" width="1920" height="1004" />
+    </state>
+    <state x="1203" y="272" width="447" height="513" key="FileChooserDialogImpl/0.27.1920.1004@0.27.1920.1004" timestamp="1589378341805" />
+    <state x="898" y="164" key="SettingsEditor" timestamp="1589378895091">
+      <screen x="0" y="27" width="1920" height="1004" />
+    </state>
+    <state x="898" y="164" key="SettingsEditor/0.27.1920.1004@0.27.1920.1004" timestamp="1589378895091" />
+    <state x="1027" y="265" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1589378611692">
+      <screen x="0" y="27" width="1920" height="1004" />
+    </state>
+    <state x="1027" y="265" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.1004@0.27.1920.1004" timestamp="1589378611692" />
+    <state x="1034" y="317" width="787" height="423" key="git4idea.merge.GitPullDialog" timestamp="1589378781660">
+      <screen x="0" y="27" width="1920" height="1004" />
+    </state>
+    <state x="1034" y="317" width="787" height="423" key="git4idea.merge.GitPullDialog/0.27.1920.1004@0.27.1920.1004" timestamp="1589378781660" />
+    <state x="1117" y="429" width="620" height="199" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1589378547420">
+      <screen x="0" y="27" width="1920" height="1004" />
+    </state>
+    <state x="1117" y="429" width="620" height="199" key="git4idea.remote.GitConfigureRemotesDialog/0.27.1920.1004@0.27.1920.1004" timestamp="1589378547420" />
+  </component>
+</project>
