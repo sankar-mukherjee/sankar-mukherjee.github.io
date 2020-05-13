@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sankar Mukherjee | Academic</title>
+    <title>Sankar Mukherjee</title>
     <link>/author/sankar-mukherjee/</link>
       <atom:link href="/author/sankar-mukherjee/index.xml" rel="self" type="application/rss+xml" />
     <description>Sankar Mukherjee</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/author/sankar-mukherjee/avatar_hucf7cc08003b8f1e4b8034143b454d4b6_74070_270x270_fill_q90_lanczos_center.jpg</url>
       <title>Sankar Mukherjee</title>
       <link>/author/sankar-mukherjee/</link>
     </image>
+    
+    <item>
+      <title> The neural oscillatory markers of phonetic convergence during verbal interaction</title>
+      <link>/publication/hbm-2019/</link>
+      <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/hbm-2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analyzing vocal tract movements during speech accommodation.</title>
+      <link>/publication/interspeech-2018/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/interspeech-2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Relationship Between F0 Synchrony and Speech Convergence in Dyadic Interaction</title>
+      <link>/publication/interspeech-2017/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/interspeech-2017/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

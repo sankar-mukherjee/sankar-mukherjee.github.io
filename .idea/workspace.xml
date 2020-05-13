@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f74f9505-2d56-49ad-98d1-9691a2d687f5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f74f9505-2d56-49ad-98d1-9691a2d687f5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +41,10 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
+    <state x="992" y="97" width="872" height="864" key="CommitChangelistDialog2" timestamp="1589378907141">
+      <screen x="0" y="27" width="1920" height="1004" />
+    </state>
+    <state x="992" y="97" width="872" height="864" key="CommitChangelistDialog2/0.27.1920.1004@0.27.1920.1004" timestamp="1589378907141" />
     <state x="1203" y="272" width="447" height="513" key="FileChooserDialogImpl" timestamp="1589378341805">
       <screen x="0" y="27" width="1920" height="1004" />
     </state>
@@ -51,17 +53,21 @@
       <screen x="0" y="27" width="1920" height="1004" />
     </state>
     <state x="898" y="164" key="SettingsEditor/0.27.1920.1004@0.27.1920.1004" timestamp="1589378895091" />
-    <state x="1027" y="265" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1589378611692">
+    <state x="1027" y="265" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1589379056917">
       <screen x="0" y="27" width="1920" height="1004" />
     </state>
-    <state x="1027" y="265" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.1004@0.27.1920.1004" timestamp="1589378611692" />
+    <state x="1027" y="265" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.1004@0.27.1920.1004" timestamp="1589379056917" />
+    <state x="1204" y="444" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589378988462">
+      <screen x="0" y="27" width="1920" height="1004" />
+    </state>
+    <state x="1204" y="444" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.1004@0.27.1920.1004" timestamp="1589378988462" />
     <state x="1034" y="317" width="787" height="423" key="git4idea.merge.GitPullDialog" timestamp="1589378781660">
       <screen x="0" y="27" width="1920" height="1004" />
     </state>
     <state x="1034" y="317" width="787" height="423" key="git4idea.merge.GitPullDialog/0.27.1920.1004@0.27.1920.1004" timestamp="1589378781660" />
-    <state x="1117" y="429" width="620" height="199" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1589378547420">
+    <state x="1117" y="429" width="620" height="199" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1589378982894">
       <screen x="0" y="27" width="1920" height="1004" />
     </state>
-    <state x="1117" y="429" width="620" height="199" key="git4idea.remote.GitConfigureRemotesDialog/0.27.1920.1004@0.27.1920.1004" timestamp="1589378547420" />
+    <state x="1117" y="429" width="620" height="199" key="git4idea.remote.GitConfigureRemotesDialog/0.27.1920.1004@0.27.1920.1004" timestamp="1589378982894" />
   </component>
 </project>
