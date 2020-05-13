@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dual-EEG | Sankar Mukherjee</title>
+    <link>/tag/dual-eeg/</link>
+      <atom:link href="/tag/dual-eeg/index.xml" rel="self" type="application/rss+xml" />
+    <description>Dual-EEG</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0c0b6d4600104dad639f4180dde10527_16163_512x512_fill_lanczos_center_2.png</url>
+      <title>Dual-EEG</title>
+      <link>/tag/dual-eeg/</link>
+    </image>
+    
+    <item>
+      <title> The neural oscillatory markers of phonetic convergence during verbal interaction</title>
+      <link>/publication/hbm-2019/</link>
+      <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/hbm-2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hyperscanning</title>
+      <link>/project/hyperscanning/</link>
+      <pubDate>Mon, 27 Apr 2015 00:00:00 +0000</pubDate>
+      <guid>/project/hyperscanning/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Short Description&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;During a conversation, speakers tend to converge towards each other. This phenomenon is called speech convergence. Aim of this project is to find what happens in the participants brain during speech convergence.&lt;/p&gt;
+&lt;p&gt;The steps are -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quantifying speech convergence and mark the time points in the conversation.&lt;/li&gt;
+&lt;li&gt;Using the markers we group the corresponding brain recordings and find some neural markers.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Speech Convergence | Sankar Mukherjee</title>
+    <link>/tag/speech-convergence/</link>
+      <atom:link href="/tag/speech-convergence/index.xml" rel="self" type="application/rss+xml" />
+    <description>Speech Convergence</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0c0b6d4600104dad639f4180dde10527_16163_512x512_fill_lanczos_center_2.png</url>
+      <title>Speech Convergence</title>
+      <link>/tag/speech-convergence/</link>
+    </image>
+    
+    <item>
+      <title> The neural oscillatory markers of phonetic convergence during verbal interaction</title>
+      <link>/publication/hbm-2019/</link>
+      <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/hbm-2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analyzing vocal tract movements during speech accommodation.</title>
+      <link>/publication/interspeech-2018/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/interspeech-2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Relationship Between F0 Synchrony and Speech Convergence in Dyadic Interaction</title>
+      <link>/publication/interspeech-2017/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/interspeech-2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hyperscanning</title>
+      <link>/project/hyperscanning/</link>
+      <pubDate>Mon, 27 Apr 2015 00:00:00 +0000</pubDate>
+      <guid>/project/hyperscanning/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Short Description&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;During a conversation, speakers tend to converge towards each other. This phenomenon is called speech convergence. Aim of this project is to find what happens in the participants brain during speech convergence.&lt;/p&gt;
+&lt;p&gt;The steps are -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quantifying speech convergence and mark the time points in the conversation.&lt;/li&gt;
+&lt;li&gt;Using the markers we group the corresponding brain recordings and find some neural markers.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Speech Convergence</title>
+      <link>/project/speech-convergence/</link>
+      <pubDate>Sun, 27 Apr 2014 00:00:00 +0000</pubDate>
+      <guid>/project/speech-convergence/</guid>
+      <description>&lt;p&gt;When people engage in verbal interaction, they adjust their speech in order to accommodate to each other. This phenomenon is called Speech Convergence. It is an emergent phenomenon happens during conversation. Although convergence is a well-known phenomenon, its quantitative assessment is still an open area of research. Here, we developed a method using automatic speaker verification technique (GMM-UBM) in order to measure speech convergence. We quantified participants&amp;rsquo; initial phonetic fingerprints and tracked their phonetic convergence during the verbal interaction.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Quantifying speech convergence and mark the time points in the conversation.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

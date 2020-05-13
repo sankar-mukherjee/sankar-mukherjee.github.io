@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dual-EMA | Sankar Mukherjee</title>
+    <link>/tag/dual-ema/</link>
+      <atom:link href="/tag/dual-ema/index.xml" rel="self" type="application/rss+xml" />
+    <description>Dual-EMA</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0c0b6d4600104dad639f4180dde10527_16163_512x512_fill_lanczos_center_2.png</url>
+      <title>Dual-EMA</title>
+      <link>/tag/dual-ema/</link>
+    </image>
+    
+    <item>
+      <title>Analyzing vocal tract movements during speech accommodation.</title>
+      <link>/publication/interspeech-2018/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/interspeech-2018/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
