@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f74f9505-2d56-49ad-98d1-9691a2d687f5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9490642e-07ce-40f6-bc1b-10b92692a51d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,9 +12,8 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
-  <component name="ProjectId" id="1br6USi5yfYNf5tqSegfFh2hVWK" />
+  <component name="ProjectId" id="1brhsws2o8D6TfiFlHD1RPAsGal" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,72 +23,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f74f9505-2d56-49ad-98d1-9691a2d687f5" name="Default Changelist" comment="" />
-      <created>1589377880544</created>
+      <changelist id="9490642e-07ce-40f6-bc1b-10b92692a51d" name="Default Changelist" comment="" />
+      <created>1589396329571</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1589377880544</updated>
+      <updated>1589396329571</updated>
     </task>
-    <task id="LOCAL-00001" summary="2nd draft">
-      <created>1589391545077</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1589391545077</updated>
-    </task>
-    <task id="LOCAL-00002" summary="cv">
-      <created>1589391673365</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1589391673365</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="VcsManagerConfiguration">
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/.." />
-    </ignored-roots>
-    <MESSAGE value="2nd draft" />
-    <MESSAGE value="cv" />
-    <option name="LAST_COMMIT_MESSAGE" value="cv" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="992" y="97" width="872" height="864" key="CommitChangelistDialog2" timestamp="1589391673338">
+    <state x="538" y="96" width="833" height="864" key="CommitChangelistDialog2" timestamp="1589396512362">
       <screen x="0" y="27" width="1920" height="1004" />
     </state>
-    <state x="992" y="97" width="872" height="864" key="CommitChangelistDialog2/0.27.1920.1004@0.27.1920.1004" timestamp="1589391673338" />
-    <state x="1203" y="272" width="447" height="513" key="FileChooserDialogImpl" timestamp="1589378341805">
-      <screen x="0" y="27" width="1920" height="1004" />
-    </state>
-    <state x="1203" y="272" width="447" height="513" key="FileChooserDialogImpl/0.27.1920.1004@0.27.1920.1004" timestamp="1589378341805" />
-    <state x="898" y="164" key="SettingsEditor" timestamp="1589378895091">
-      <screen x="0" y="27" width="1920" height="1004" />
-    </state>
-    <state x="898" y="164" key="SettingsEditor/0.27.1920.1004@0.27.1920.1004" timestamp="1589378895091" />
-    <state x="1027" y="265" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1589391680174">
-      <screen x="0" y="27" width="1920" height="1004" />
-    </state>
-    <state x="1027" y="265" width="800" height="528" key="Vcs.Push.Dialog.v2/0.27.1920.1004@0.27.1920.1004" timestamp="1589391680174" />
-    <state x="1204" y="444" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589378988462">
-      <screen x="0" y="27" width="1920" height="1004" />
-    </state>
-    <state x="1204" y="444" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.1004@0.27.1920.1004" timestamp="1589378988462" />
-    <state x="1034" y="317" width="787" height="423" key="git4idea.merge.GitPullDialog" timestamp="1589378781660">
-      <screen x="0" y="27" width="1920" height="1004" />
-    </state>
-    <state x="1034" y="317" width="787" height="423" key="git4idea.merge.GitPullDialog/0.27.1920.1004@0.27.1920.1004" timestamp="1589378781660" />
-    <state x="1117" y="429" width="620" height="199" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1589378982894">
-      <screen x="0" y="27" width="1920" height="1004" />
-    </state>
-    <state x="1117" y="429" width="620" height="199" key="git4idea.remote.GitConfigureRemotesDialog/0.27.1920.1004@0.27.1920.1004" timestamp="1589378982894" />
+    <state x="538" y="96" width="833" height="864" key="CommitChangelistDialog2/0.27.1920.1004@0.27.1920.1004" timestamp="1589396512362" />
   </component>
 </project>
