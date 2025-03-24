@@ -183,5 +183,6 @@ awards:
 ---
 
 <!-- ## About Me -->
+Building in progress..............
 
 I have worked on speech synthesis, prosody modelling, speech/speaker recognition, speech imitation modelling, audio event detection, computational neuroscience, dual interaction. I have used different technology stacks such as Python, PySpark, PyTorch, JAVA, JS, C#, SQL, Matlab. I occasionally participate in Kaggle competitions. In my spare time i like to travel and practice my Italian and French. I like to learn new things and always look for challenges.

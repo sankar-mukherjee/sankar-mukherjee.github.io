@@ -3,16 +3,30 @@
   #     desired widget in your `content/home/` folder.
   #   The weight parameter defines the order that the links will appear in.
 
-main:
-  - name: Blog
-    url: /#news
-    weight: 10
-  - name: Projects
-    url: projects/
-    weight: 11
-  - name: About Me
-    url: /
-    weight: 20
+# main:
+#   - identifier: blog
+#     name: Blog
+#     url: /
+#     weight: 1
+#   - identifier: projects
+#     name: Projects
+#     url: /projects/
+#     weight: 2
+#   - identifier: about
+#     name: About Me
+#     url: /authors/admin/
+#     weight: 3
+
+# main:
+#   - name: Blog
+#     url: /#news
+#     weight: 10
+#   - name: Projects
+#     url: projects/
+#     weight: 11
+#   - name: About Me
+#     url: /
+#     weight: 20
   # - name: Skills
   #   url: /#skills
   #   weight: 11
@@ -25,6 +39,31 @@ main:
   # - name: Awards
   #   url: /#talks
   #   weight: 14
+  # - name: Teaching
+  #   url: teaching/
+  #   weight: 40
+main:
+  - name: About
+    url: /
+    weight: 10
+  # - name: Papers
+  #   url: /#papers
+  #   weight: 11
+  # - name: Talks
+  #   url: /#talks
+  #   weight: 12
+  # - name: News
+  #   url: /#news
+  #   weight: 13
+  - name: Resume
+    url: experience/
+    weight: 20
+  - name: Projects
+    url: projects/
+    weight: 30
+  - name: Blog
+    url: blog/
+    weight: 40
   # - name: Teaching
   #   url: teaching/
   #   weight: 40
