@@ -55,8 +55,8 @@ education:
     institution: Istituto Italiano di Tecnologia
     date_start: 2015-11-01
     date_end: 2019-02-14
-    # summary: |
-    #   Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
+    summary: |
+      Thesis on Neural markers of Speech Convergence during conversation. Supervised by [Prof Luciano Fadiga](https://scholar.google.com/citations?user=EPOtdwMAAAAJ&hl=en).
     # button:
     #   text: 'Read Thesis'
     #   url: 'https://example.com'
@@ -64,13 +64,10 @@ education:
     institution: Indian Institute of Technology Kharagpur
     date_start: 2012-06-01
     date_end: 2014-05-20
-    # summary: |
-    #   GPA: 3.8/4.0
+    summary: |
+      - Relevant coursework in Data structure, Algorithms and Digital Signal Processing.
+      - Thesis on “Bengali speech synthesis with natural prosody on mobile phone”.
 
-    #   Courses included:
-    #   - lorem ipsum dolor sit amet, consectetur adipiscing elit
-    #   - lorem ipsum dolor sit amet, consectetur adipiscing elit
-    #   - lorem ipsum dolor sit amet, consectetur adipiscing elit
   - area: B.Tech in Electronics and Communication Engineering, 2009
     institution: Jalpaiguri Govt. Engg. College
     date_start: 2005-05-01
@@ -124,7 +121,7 @@ work:
     date_start: 2020-08-01
     date_end: 2020-12-01
     summary: |2-
-      - Researched generative modeling, disentangled speech representation, and adversarial learning under Dr. Yannis Stylianou.
+      - Researched generative modeling, disentangled speech representation, and adversarial learning under [Prof. Yannis Stylianou](https://scholar.google.com/citations?user=6ZSjpdwAAAAJ&hl=en).
       - Developed a zero-shot multi-speaker, multi-style TTS (MOS 3.62, style similarity 3.41), presented at Interspeech 2021.
   - position: Speech Scientist
     company_name: Defined.ai
