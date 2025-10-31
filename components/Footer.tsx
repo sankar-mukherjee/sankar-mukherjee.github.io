@@ -2,7 +2,7 @@ import React from 'react';
 
 const socialLinks = [
   { icon: 'fa-github', url: 'https://github.com/sankar-mukherjee', name: 'GitHub' },
-  { icon: 'fa-linkedin-in', url: 'https://www.linkedin.com/in/sankarmukherjee/', name: 'LinkedIn' },
+  { icon: 'fa-linkedin-in', url: 'https://www.linkedin.com/in/mukherjeesankar', name: 'LinkedIn' },
 ];
 
 export const Footer: React.FC = () => {
