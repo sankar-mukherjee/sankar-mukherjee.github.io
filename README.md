@@ -1,18 +1,20 @@
-## setup in GitHub codespaces
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-```
-sudo rm -f /usr/local/bin/hugo
-sudo rm -f /usr/local/hugo/bin/hugo
-which hugo
-wget https://github.com/gohugoio/hugo/releases/download/v0.139.4/hugo_extended_0.139.4_linux-amd64.tar.gz
-tar -xvzf hugo_extended_0.139.4_linux-amd64.tar.gz
-sudo mv hugo /usr/local/bin/
-unset HUGO_BIN
+# Run and deploy your AI Studio app
 
-```
-restart terminal
+This contains everything you need to run your app locally.
 
-## run
-```
-hugo server -D
-```
+View your app in AI Studio: https://ai.studio/apps/drive/1nEq_FggQZic45vQ2kcyLUHYkHGG9eqNc
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
