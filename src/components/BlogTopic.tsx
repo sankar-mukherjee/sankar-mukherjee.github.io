@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { IndexEntry } from '../types';
+import { IndexEntry } from '../types.ts';
 
 // Declare `marked` on the window object since it's loaded from a CDN script
 declare global {

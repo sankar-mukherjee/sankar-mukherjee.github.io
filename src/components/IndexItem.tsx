@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { IndexEntry } from '../types';
+import { IndexEntry } from '../types.ts';
 
 interface IndexItemProps {
   entry: IndexEntry;

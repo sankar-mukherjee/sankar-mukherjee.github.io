@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { About } from './components/About';
-import { Blog } from './components/Blog';
-import { Page } from './types';
+import { Header } from './components/Header.tsx';
+import { Footer } from './components/Footer.tsx';
+import { About } from './components/About.tsx';
+import { Blog } from './components/Blog.tsx';
+import { Page } from './types.ts';
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<Page>(Page.About);
