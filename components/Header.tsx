@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { Page } from '../types.ts';
-import { useTheme } from '../ThemeContext.tsx';
+import { Page } from '../types';
+import { useTheme } from '../ThemeContext';
 
 interface HeaderProps {
   activePage: Page;

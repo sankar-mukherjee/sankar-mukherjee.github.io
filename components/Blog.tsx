@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
-import { IndexEntry } from '../types.ts';
-import { IndexItem } from './IndexItem.tsx';
-import { BlogTopic } from './BlogTopic.tsx';
+import { IndexEntry } from '../types';
+import { IndexItem } from './IndexItem';
+import { BlogTopic } from './BlogTopic';
 
 // Helper to parse metadata from a filename like "1-1-1.md"
 const parseFilename = (filename: string): { id: string } => {

@@ -1,15 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
-import { IndexEntry } from '../types.ts';
-
-// Declare `marked` on the window object since it's loaded from a CDN script
-declare global {
-  interface Window {
-    marked: {
-      parse: (markdown: string) => string;
-    };
-  }
-}
+import { IndexEntry } from '../types';
+import { marked } from 'marked';
 
 interface BlogTopicProps {
   selectedTopic: IndexEntry;
@@ -54,16 +45,12 @@ export const BlogTopic: React.FC<BlogTopicProps> = ({ selectedTopic, onBack }) =
           return response.text();
         })
         .then(text => {
-          if (window.marked) {
-            const { title: fmTitle, content: mdContent } = parseFrontMatter(text);
-            if (fmTitle) {
-              setPostTitle(fmTitle);
-            }
-            const html = window.marked.parse(mdContent);
-            setPostContent(html);
-          } else {
-            throw new Error('Markdown parser (marked.js) is not loaded.');
+          const { title: fmTitle, content: mdContent } = parseFrontMatter(text);
+          if (fmTitle) {
+            setPostTitle(fmTitle);
           }
+          const html = marked.parse(mdContent);
+          setPostContent(html);
         })
         .catch(err => {
           console.error("Failed to fetch or parse blog post:", err);
