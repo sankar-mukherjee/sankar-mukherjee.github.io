@@ -1,7 +1,7 @@
 import React from 'react';
 
 const skills = [
-  'Pytorch', 'AWS', 'Docker'
+  'Pytorch', 'AWS', 'Docker', 'CI/CD', 'Cursor'
 ];
 
 export const About: React.FC = () => {
@@ -33,7 +33,7 @@ export const About: React.FC = () => {
             <div className="relative group w-64 h-64 mx-auto">
                 <div className="absolute inset-0 bg-black dark:bg-white rounded-md transform group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-300"></div>
                 <img 
-                    src="/img/avatar.jpeg" 
+                    src="/img/avatar.jpg" 
                     alt="Sankar Mukherjee"
                     className="absolute inset-0 w-full h-full object-cover rounded-md z-10"
                 />
