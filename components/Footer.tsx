@@ -1,8 +1,9 @@
 import React from 'react';
 
 const socialLinks = [
-  { icon: 'fa-github', url: 'https://github.com/sankar-mukherjee', name: 'GitHub' },
-  { icon: 'fa-linkedin-in', url: 'https://www.linkedin.com/in/mukherjeesankar', name: 'LinkedIn' },
+  { icon: 'fa-brands fa-github', url: 'https://github.com/sankar-mukherjee', name: 'GitHub' },
+  { icon: 'fa-brands fa-linkedin-in', url: 'https://www.linkedin.com/in/mukherjeesankar', name: 'LinkedIn' },
+  { icon: 'fa-solid fa-newspaper', url: 'https://sankar1535.substack.com/', name: 'Substack' },
 ];
 
 export const Footer: React.FC = () => {
@@ -19,7 +20,7 @@ export const Footer: React.FC = () => {
               aria-label={link.name}
               className="text-gray-600 dark:text-slate hover:text-black dark:hover:text-white transition-colors duration-300 text-2xl"
             >
-              <i className={`fab ${link.icon}`}></i>
+            <i className={`${link.icon}`}></i>
             </a>
           ))}
         </div>
