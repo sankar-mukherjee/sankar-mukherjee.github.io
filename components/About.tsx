@@ -1,7 +1,12 @@
 import React from 'react';
+import { SubstackNews } from './SubstackNews';
 
 const skills = [
-  'Pytorch', 'AWS', 'Docker', 'CI/CD', 'Cursor'
+  { label: 'Pytorch', icon: 'fa-solid fa-brain' },
+  { label: 'AWS', icon: 'fa-brands fa-aws' },
+  { label: 'Docker', icon: 'fa-brands fa-docker' },
+  { label: 'CI/CD', icon: 'fa-solid fa-gears' },
+  { label: 'Vibe Coding (Cursor / Codex / Claude / OpenCode)', icon: null },
 ];
 
 export const About: React.FC = () => {
@@ -23,8 +28,13 @@ export const About: React.FC = () => {
           </p>
           <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 font-mono text-sm">
             {skills.map(skill => (
-              <li key={skill} className="flex items-center">
-                <span className="text-black dark:text-white mr-2">▹</span>{skill}
+              <li key={skill.label} className="flex items-center gap-2">
+                {skill.icon ? (
+                  <i className={`${skill.icon} text-gray-600 dark:text-slate`}></i>
+                ) : (
+                  <span className="text-black dark:text-white">▹</span>
+                )}
+                <span>{skill.label}</span>
               </li>
             ))}
           </ul>
@@ -40,6 +50,7 @@ export const About: React.FC = () => {
             </div>
         </div>
       </section>
+      <SubstackNews />
     </div>
   );
 };

@@ -30,6 +30,9 @@ export const Header: React.FC<HeaderProps> = ({ activePage, setActivePage }) => 
                 <a onClick={() => setActivePage(Page.About)} className={navLinkClasses(Page.About)}>
                   About
                 </a>
+                <a onClick={() => setActivePage(Page.Projects)} className={navLinkClasses(Page.Projects)}>
+                  Projects
+                </a>
                 <a onClick={() => setActivePage(Page.Blog)} className={navLinkClasses(Page.Blog)}>
                   Blog
                 </a>

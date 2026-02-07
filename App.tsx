@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { About } from './components/About';
 import { Blog } from './components/Blog';
+import { Projects } from './components/Projects';
 import { Page } from './types';
 
 const App: React.FC = () => {
@@ -12,6 +13,8 @@ const App: React.FC = () => {
     switch (activePage) {
       case Page.Blog:
         return <Blog />;
+      case Page.Projects:
+        return <Projects />;
       case Page.About:
       default:
         return <About />;
