@@ -31,6 +31,18 @@ export const Header: React.FC<HeaderProps> = ({ activePage, setActivePage }) => 
                 <a onClick={() => setActivePage(Page.About)} className={navLinkClasses(Page.About)}>
                   About
                 </a>
+                <a
+                  onClick={() => {
+                    if (window.location.hash.startsWith('#/llms')) {
+                      history.pushState('', document.title, window.location.pathname + window.location.search);
+                      window.dispatchEvent(new HashChangeEvent('hashchange'));
+                    }
+                    setActivePage(Page.LLMs);
+                  }}
+                  className={navLinkClasses(Page.LLMs)}
+                >
+                  LLMs From Scratch
+                </a>
                 <a onClick={() => setActivePage(Page.Projects)} className={navLinkClasses(Page.Projects)}>
                   Projects
                 </a>
@@ -71,6 +83,19 @@ export const Header: React.FC<HeaderProps> = ({ activePage, setActivePage }) => 
               className={navLinkClasses(Page.About)}
             >
               About
+            </a>
+            <a
+              onClick={() => {
+                if (window.location.hash.startsWith('#/llms')) {
+                  history.pushState('', document.title, window.location.pathname + window.location.search);
+                  window.dispatchEvent(new HashChangeEvent('hashchange'));
+                }
+                setActivePage(Page.LLMs);
+                setIsMenuOpen(false);
+              }}
+              className={navLinkClasses(Page.LLMs)}
+            >
+              LLMs From Scratch
             </a>
             <a
               onClick={() => {

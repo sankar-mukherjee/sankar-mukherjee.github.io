@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { About } from './components/About';
 import { Blog } from './components/Blog';
 import { Projects } from './components/Projects';
+import { LLMsFromScratch } from './components/LLMsFromScratch';
 import { Page } from './types';
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<Page>(Page.About);
+
+  useEffect(() => {
+    const syncFromHash = () => {
+      const hash = window.location.hash || '';
+      if (hash.startsWith('#/llms')) {
+        setActivePage(Page.LLMs);
+      }
+    };
+
+    syncFromHash();
+    window.addEventListener('hashchange', syncFromHash);
+    return () => window.removeEventListener('hashchange', syncFromHash);
+  }, []);
 
   const renderPage = () => {
     switch (activePage) {
@@ -15,6 +29,8 @@ const App: React.FC = () => {
         return <Blog />;
       case Page.Projects:
         return <Projects />;
+      case Page.LLMs:
+        return <LLMsFromScratch />;
       case Page.About:
       default:
         return <About />;

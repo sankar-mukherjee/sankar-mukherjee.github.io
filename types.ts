@@ -9,4 +9,5 @@ export enum Page {
   About = 'about',
   Blog = 'blog',
   Projects = 'projects',
+  LLMs = 'llms',
 }
