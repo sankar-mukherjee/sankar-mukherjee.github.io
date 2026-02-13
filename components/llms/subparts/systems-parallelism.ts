@@ -4,11 +4,21 @@ export const systemsParallelism: LlmSubpart = {
   id: 'parallelism',
   title: 'Parallelism',
   description: 'How LLM workloads are split across devices for efficient training and inference.',
-  content: [
-    'LLM parallelism is fundamentally a scaling strategy for memory and throughput: once model states or target tokens/sec exceed a single GPU, work must be partitioned across ranks.',
-    'This page connects the core communication primitives (collectives and all-reduce decomposition) to practical sharding methods such as ZeRO/FSDP and to hybrid 3D parallel setups.',
-    'The governing tradeoff is consistent across methods: better memory efficiency and larger scale usually increase communication cost, so topology, overlap, and partition choices decide real speed.',
+  meta: {
+    lastUpdated: 'February 11, 2026',
+    keywords: 'deepspeed, 3d parallelism, llm training systems',
+  },
+  borderless: true,
+  introTitle: 'Why parallelism exists (memory wall)',
+  introParagraph:
+    'Training modern transformers is constrained by memory capacity per GPU, interconnect bandwidth, and compute utilization. As models scale, a single device cannot efficiently hold parameters, optimizer states, and activations. Parallelism is therefore a scaling requirement. Think of parallelism as distributing work across four axes:',
+  introPoints: [
+    'batch dimension -> data parallelism',
+    'hidden dimension -> tensor parallelism',
+    'layer dimension -> pipeline parallelism',
+    'sequence dimension -> context or sequence parallelism',
   ],
+  content: [],
   figures: [
     {
       title: 'Collective Communication and All-Reduce',

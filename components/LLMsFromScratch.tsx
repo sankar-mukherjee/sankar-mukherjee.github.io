@@ -98,6 +98,29 @@ export const LLMsFromScratch: React.FC = () => {
         </div>
 
         <div className="rounded-2xl border border-gray-200 dark:border-slate/60 bg-white dark:bg-navy/60 p-6 shadow-sm space-y-4">
+          {subpart.meta ? (
+            <div className="text-right text-xs font-mono text-gray-500 dark:text-slate space-y-1">
+              {subpart.meta.lastUpdated ? <p>Last updated: {subpart.meta.lastUpdated}</p> : null}
+              {subpart.meta.keywords ? <p>Keywords: {subpart.meta.keywords}</p> : null}
+            </div>
+          ) : null}
+          {subpart.introTitle ? (
+            <h3 className="text-base font-semibold text-gray-900 dark:text-lightest-slate">
+              {subpart.introTitle}
+            </h3>
+          ) : null}
+          {subpart.introParagraph ? (
+            <p className="text-sm text-gray-700 dark:text-light-slate">
+              {subpart.introParagraph}
+            </p>
+          ) : null}
+          {subpart.introPoints ? (
+            <ul className="space-y-1 text-sm text-gray-700 dark:text-light-slate list-disc pl-5">
+              {subpart.introPoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          ) : null}
           {subpart.content.map((paragraph) => (
             <p key={paragraph} className="text-sm text-gray-700 dark:text-light-slate">
               {paragraph}
@@ -120,7 +143,9 @@ export const LLMsFromScratch: React.FC = () => {
               {subpart.figures.map((figure) => (
                 <div
                   key={figure.title}
-                  className="rounded-xl border border-gray-200/80 dark:border-slate/60 bg-gray-50 dark:bg-navy/40 p-4 space-y-3"
+                  className={`rounded-xl bg-gray-50 dark:bg-navy/40 p-4 space-y-3 ${
+                    subpart.borderless ? '' : 'border border-gray-200/80 dark:border-slate/60'
+                  }`}
                 >
                   <div>
                     <h4 className="text-base font-semibold text-gray-900 dark:text-lightest-slate">
@@ -162,7 +187,12 @@ export const LLMsFromScratch: React.FC = () => {
                   {figure.groups ? (
                     <div className="space-y-3">
                       {figure.groups.map((group) => (
-                        <div key={group.header} className="rounded-lg border border-gray-200 dark:border-slate/60 bg-white dark:bg-navy/60 px-3 py-3 space-y-2">
+                        <div
+                          key={group.header}
+                          className={`rounded-lg bg-white dark:bg-navy/60 px-3 py-3 space-y-2 ${
+                            subpart.borderless ? '' : 'border border-gray-200 dark:border-slate/60'
+                          }`}
+                        >
                           <p className="text-sm font-semibold text-gray-900 dark:text-lightest-slate">
                             {group.header}
                           </p>
@@ -307,9 +337,6 @@ export const LLMsFromScratch: React.FC = () => {
           </a>
         </div>
       </div>
-      <div className="border-t border-gray-200 dark:border-slate/60 mt-2"></div>
-      <div className="pt-2"></div>
-
       <div className="space-y-4">
         {llmParts.map((part) => (
           <details

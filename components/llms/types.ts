@@ -2,6 +2,14 @@ export type LlmSubpart = {
   id: string;
   title: string;
   description: string;
+  meta?: {
+    lastUpdated?: string;
+    keywords?: string;
+  };
+  borderless?: boolean;
+  introTitle?: string;
+  introParagraph?: string;
+  introPoints?: string[];
   content: string[];
   sections?: string[];
   figures?: {
