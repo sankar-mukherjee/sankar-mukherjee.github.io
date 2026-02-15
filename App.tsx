@@ -1,11 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { About } from './components/About';
-import { Blog } from './components/Blog';
-import { Projects } from './components/Projects';
-import { LLMsFromScratch } from './components/LLMsFromScratch';
 import { Page } from './types';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/vs2015.css';
+
+const About = lazy(() =>
+  import('./components/About').then((m) => ({ default: m.About }))
+);
+const Blog = lazy(() =>
+  import('./components/Blog').then((m) => ({ default: m.Blog }))
+);
+const Projects = lazy(() =>
+  import('./components/Projects').then((m) => ({ default: m.Projects }))
+);
+const LLMsFromScratch = lazy(() =>
+  import('./components/LLMsFromScratch').then((m) => ({ default: m.LLMsFromScratch }))
+);
+const MLCode = lazy(() =>
+  import('./components/MLCode').then((m) => ({ default: m.MLCode }))
+);
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<Page>(Page.About);
@@ -23,6 +37,10 @@ const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', syncFromHash);
   }, []);
 
+  useEffect(() => {
+    hljs.highlightAll();
+  }, [activePage]);
+
   const renderPage = () => {
     switch (activePage) {
       case Page.Blog:
@@ -31,6 +49,8 @@ const App: React.FC = () => {
         return <Projects />;
       case Page.LLMs:
         return <LLMsFromScratch />;
+      case Page.MLCode:
+        return <MLCode />;
       case Page.About:
       default:
         return <About />;
@@ -51,7 +71,9 @@ const App: React.FC = () => {
       <Header activePage={activePage} setActivePage={setActivePage} />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         <div className="max-w-6xl mx-auto">
-          {renderPage()}
+          <Suspense fallback={<p className="text-center">Loading...</p>}>
+            {renderPage()}
+          </Suspense>
         </div>
       </main>
       <Footer />

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* VSCode-like code block baseline */
+pre.vscode-code {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  border: 1px solid #2d2d2d;
+}
+
+pre.vscode-code code {
+  font-family: Consolas, 'Fira Code', 'Courier New', monospace;
+  line-height: 1.45;
+}

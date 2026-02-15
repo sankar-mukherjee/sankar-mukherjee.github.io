@@ -43,6 +43,9 @@ export const Header: React.FC<HeaderProps> = ({ activePage, setActivePage }) => 
                 >
                   LLMs From Scratch
                 </a>
+                <a onClick={() => setActivePage(Page.MLCode)} className={navLinkClasses(Page.MLCode)}>
+                  ML Code
+                </a>
                 <a onClick={() => setActivePage(Page.Projects)} className={navLinkClasses(Page.Projects)}>
                   Projects
                 </a>
@@ -96,6 +99,15 @@ export const Header: React.FC<HeaderProps> = ({ activePage, setActivePage }) => 
               className={navLinkClasses(Page.LLMs)}
             >
               LLMs From Scratch
+            </a>
+            <a
+              onClick={() => {
+                setActivePage(Page.MLCode);
+                setIsMenuOpen(false);
+              }}
+              className={navLinkClasses(Page.MLCode)}
+            >
+              ML Code
             </a>
             <a
               onClick={() => {

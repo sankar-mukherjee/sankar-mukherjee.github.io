@@ -2,8 +2,11 @@
 export default {
   darkMode: 'class',
   content: [
-    "./index.html",
-    "./**/*.{ts,tsx}",
+    './index.html',
+    './App.tsx',
+    './index.tsx',
+    './components/**/*.{ts,tsx}',
+    './public/content/**/*.{md,json}',
   ],
   theme: {
     extend: {

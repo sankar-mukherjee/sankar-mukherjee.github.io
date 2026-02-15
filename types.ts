@@ -10,4 +10,5 @@ export enum Page {
   Blog = 'blog',
   Projects = 'projects',
   LLMs = 'llms',
+  MLCode = 'mlcode',
 }
