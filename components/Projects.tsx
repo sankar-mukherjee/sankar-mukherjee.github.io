@@ -6,6 +6,8 @@ const projects = [
     description:
       'Hands-on learning repo where I implement LLM and deep learning components from scratch and share small, focused code snippets.',
     repo: 'https://github.com/sankar-mukherjee/LLMCode',
+    image:
+      'https://raw.githubusercontent.com/sankar-mukherjee/LLMCode/main/repo.png',
     date: 'Ongoing',
     tags: ['LLM Fundamentals', 'Deep Learning', 'Code Snippets'],
   },
@@ -144,6 +146,9 @@ export const Projects: React.FC = () => {
 
       <div className="space-y-6">
         {projects.map(project => (
+          (() => {
+            const projectImage = ('image' in project ? project.image : undefined) || repoImages[project.repo];
+            return (
           <article
             key={project.name}
             className="group rounded-xl border border-gray-200 dark:border-slate/60 bg-white dark:bg-navy/60 p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
@@ -180,18 +185,20 @@ export const Projects: React.FC = () => {
                   </a>
                 </div>
               </div>
-              {repoImages[project.repo] ? (
+              {projectImage ? (
                 <div className="md:w-72 md:flex-shrink-0">
                   <img
-                    src={repoImages[project.repo]}
+                    src={projectImage}
                     alt={`${project.name} README preview`}
-                    className="w-full max-h-52 rounded-lg border border-gray-200/80 dark:border-slate/60 object-contain bg-gray-50 dark:bg-navy/40"
+                    className="w-full max-h-52 rounded-lg object-contain bg-gray-50 dark:bg-navy/40"
                     loading="lazy"
                   />
                 </div>
               ) : null}
             </div>
           </article>
+            );
+          })()
         ))}
       </div>
     </div>
