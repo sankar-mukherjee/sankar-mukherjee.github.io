@@ -87,7 +87,7 @@ const sections: MLSection[] = [
         return patches.amax(dim=(-1, -2))`,
       },
       {
-        title: 'MultiLayerCNN2D',
+        title: 'ConvBlock2D',
         code: `class ConvBlock2D(nn.Module):
     def __init__(self, in_c, out_c, kernel_size=3, padding=1, pool_size=2):
         super().__init__()
@@ -307,6 +307,114 @@ class LSTMModel(nn.Module):
       },
     ],
   },
+  {
+    id: 'linear_algebra',
+    title: 'Linear Algebra',
+    sourceUrl: 'https://github.com/sankar-mukherjee/LLMCode/tree/main/src/basic/linear_algebra',
+    images: [],
+    snippets: [
+      {
+        title: 'matmul',
+        code: `def matmul(A, B):
+    """Matrix multiplication: A @ B"""
+    r1, c1 = len(A), len(A[0])
+    r2, c2 = len(B), len(B[0])
+
+    # check dimension compatibility
+    if c1 != r2:
+        return -1
+
+    C = [[0]*c2 for _ in range(r1)]
+
+    # compute each element C[i][j]
+    for i in range(r1):
+        for j in range(c2):
+            for k in range(c1):
+                C[i][j] += A[i][k] * B[k][j]
+
+    return C`,
+      },
+      {
+        title: 'covariance_matrix',
+        code: `def covariance_matrix(X):
+    """
+    Compute covariance matrix from data.
+    X : numpy array of shape [samples, features]
+    returns: covariance matrix [features × features]
+    """
+    Xc = X - X.mean(axis=0)            # center each feature
+    cov = (Xc.T @ Xc) / (len(X) - 1)   # sample covariance formula
+    return cov`,
+      },
+      {
+        title: 'pca',
+        code: `def pca(X, k):
+    """
+    Principal Component Analysis: reduce X to k dimensions.
+    """
+    cov = covariance_matrix(X)
+    eigvals, eigvecs = np.linalg.eig(cov)
+    idx = np.argsort(eigvals)[::-1]
+    W = eigvecs[:, idx[:k]]
+    X_centered = X - X.mean(axis=0)
+    return X_centered @ W`,
+      },
+      {
+        title: 'k_means',
+        code: `def k_means(points, k, initial_centroids, max_iterations):
+    X = torch.tensor(points, dtype=torch.float32)
+    centroids = torch.tensor(initial_centroids, dtype=torch.float32)
+
+    for _ in range(max_iterations):
+        dist = torch.sum((X[:,None,:] - centroids[None,:,:])**2, dim=2)
+        labels = torch.argmin(dist, dim=1)
+
+        new_centroids = []
+        for i in range(k):
+            pts = X[labels == i]
+            if len(pts) == 0:
+                new_centroids.append(centroids[i])
+            else:
+                new_centroids.append(pts.mean(dim=0))
+
+        centroids = torch.stack(new_centroids)
+
+    return [tuple(round(float(x), 4) for x in c) for c in centroids]`,
+      },
+    ],
+  },
+  {
+    id: 'ml_activations',
+    title: 'ML Activations',
+    sourceUrl: 'https://github.com/sankar-mukherjee/LLMCode/tree/main/src/basic/ml',
+    images: [{ src: '/activation_eq.png', alt: 'Activation equations' }],
+    snippets: [
+      {
+        title: 'ReLU',
+        code: `def relu(x):
+    """ReLU activation: max(0, x)"""
+    return torch.clamp(x, min=0)`,
+      },
+      {
+        title: 'Sigmoid',
+        code: `def sigmoid(x):
+    """Sigmoid activation: 1 / (1 + e^(-x))"""
+    return 1 / (1 + torch.exp(-x))`,
+      },
+      {
+        title: 'GELU (tanh approximation)',
+        code: `def gelu(x):
+    """Fast GELU (tanh approximation)"""
+    t = math.sqrt(2 / math.pi) * (x + 0.044715 * x**3)
+    return 0.5 * x * (1 + torch.tanh(t))`,
+      },
+      {
+        title: 'SiLU',
+        code: `def silu(x):
+    return x * sigmoid(x)`,
+      },
+    ],
+  },
 ];
 
 const renderSnippet = (snippet: Snippet, wrap = false) => (
@@ -320,6 +428,8 @@ const renderSnippet = (snippet: Snippet, wrap = false) => (
   </article>
 );
 
+const sectionOrder = ['linear_algebra', 'ml_activations', 'loss', 'rnn', 'cnn'];
+
 export const MLCode: React.FC = () => {
   useEffect(() => {
     hljs.highlightAll();
@@ -332,16 +442,17 @@ export const MLCode: React.FC = () => {
           ML Code
         </h2>
         <p className="text-gray-700 dark:text-light-slate">
-          Curated snippets from <code>LLMCode/src/basic</code> for <code>cnn</code>, <code>rnn</code>, and <code>loss</code>.
+          Curated snippets from <code>LLMCode/src/basic</code> for <code>cnn</code>, <code>rnn</code>, <code>loss</code>, <code>linear_algebra</code>, and <code>ml</code>.
         </p>
       </div>
 
       <div className="space-y-4">
-        {sections.map((section) => (
+        {[...sections]
+          .sort((a, b) => sectionOrder.indexOf(a.id) - sectionOrder.indexOf(b.id))
+          .map((section) => (
           <details
             key={section.id}
             className="group rounded-xl border border-gray-200 dark:border-slate/60 bg-white dark:bg-navy/60 p-5 shadow-sm"
-            open={section.id === 'cnn'}
           >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
               <div className="min-w-0">
@@ -409,6 +520,44 @@ export const MLCode: React.FC = () => {
                 <div className="grid gap-6 lg:grid-cols-2 items-start">
                   <div className="space-y-4">
                     {section.snippets.map((snippet) => renderSnippet(snippet, true))}
+                  </div>
+                  <div className="lg:sticky lg:top-6">
+                    <img
+                      src={section.images[0].src}
+                      alt={section.images[0].alt}
+                      className="w-full rounded-lg border border-gray-200/80 dark:border-slate/60 bg-gray-50 dark:bg-navy/40 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ) : null}
+
+              {section.id === 'linear_algebra' ? (
+                <div className="space-y-4">
+                  <div className="grid gap-4 lg:grid-cols-2 items-start">
+                    <div className="space-y-4">
+                      {renderSnippet(section.snippets[0], true)}
+                      {renderSnippet(section.snippets[1], true)}
+                    </div>
+                    <div className="space-y-4">
+                      {renderSnippet(section.snippets[2], true)}
+                      {renderSnippet(section.snippets[3], true)}
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+
+              {section.id === 'ml_activations' ? (
+                <div className="grid gap-6 lg:grid-cols-2 items-start">
+                  <div className="space-y-4">
+                    <div className="space-y-4">
+                      {renderSnippet(section.snippets[0], true)}
+                      {renderSnippet(section.snippets[1], true)}
+                    </div>
+                    <div className="space-y-4">
+                      {renderSnippet(section.snippets[2], true)}
+                      {renderSnippet(section.snippets[3], true)}
+                    </div>
                   </div>
                   <div className="lg:sticky lg:top-6">
                     <img
