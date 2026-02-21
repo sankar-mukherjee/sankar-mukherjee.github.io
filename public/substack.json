@@ -1,7 +1,14 @@
 {
   "feed": "https://sankar1535.substack.com/feed",
-  "generatedAt": "2026-02-07T13:06:24.904Z",
+  "generatedAt": "2026-02-21T14:25:32.692Z",
   "items": [
+    {
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "link": "https://sankar1535.substack.com/p/autoregressive-token-generation-why",
+      "date": "Sat, 21 Feb 2026 14:07:03 GMT",
+      "snippet": "Autoregressive token generation creates a sequential bottleneck where each new token requires a full model pass, causing latency to scale with output",
+      "imageUrl": "https://substackcdn.com/image/fetch/$s_!EKeA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd7e78e20-83d6-4a07-ac70-3225355ea1b8_690x667.png"
+    },
     {
       "title": "BitNet Distillation: The 3-Stage Pipeline That Delivers Full-Precision LLM Performance at 1.58-bit Ultra-Low Quantization",
       "link": "https://sankar1535.substack.com/p/bitnet-distillation-the-3-stage-pipeline",
@@ -15,13 +22,6 @@
       "date": "Tue, 07 Oct 2025 07:43:36 GMT",
       "snippet": "Hidden State Divergence: The Imperative for Architectural Split Preserving Textual Integrity in Speech",
       "imageUrl": "https://substackcdn.com/image/fetch/$s_!ae5U!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F852e178a-c4af-4a97-bf5e-18f7ae35448a_829x698.png"
-    },
-    {
-      "title": "Revolutionizing Text-to-Speech: How Differentiable Reward Optimization is Changing the Game",
-      "link": "https://sankar1535.substack.com/p/revolutionizing-text-to-speech-how",
-      "date": "Fri, 11 Jul 2025 03:12:15 GMT",
-      "snippet": "This paper presents a Differentiable Reward Optimization method to enhance the performance of neural codec language model-based text-to-speech systems by directly predicting rewards from neural",
-      "imageUrl": "https://substackcdn.com/image/fetch/$s_!H-NT!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F69e09fac-993e-425f-8fb9-745aa8fcf031_1600x711.png"
     }
   ]
 }

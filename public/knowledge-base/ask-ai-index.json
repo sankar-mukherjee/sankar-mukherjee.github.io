@@ -1,0 +1,202 @@
+{
+  "generatedAt": "2026-02-21T14:25:01.210Z",
+  "totalDocs": 28,
+  "docs": [
+    {
+      "id": "blog-1.md-0",
+      "title": "Speech Large Language Models (SpeechLLMs)",
+      "url": "/content/1.md",
+      "source": "blog",
+      "text": "1. SpeechLLMs Evaluations Overview of what Large Language Models are. https://sankar1535.substack.com/p/evaluation of large audio language"
+    },
+    {
+      "id": "blog-2.md-0",
+      "title": "Audio Codec",
+      "url": "/content/2.md",
+      "source": "blog",
+      "text": "1. Introduction to Audio Codecs What an audio codec is and its role in digital audio systems. Difference between lossy and lossless codecs. Overview of common codecs (MP3, AAC, Opus, FLAC, etc.). 2. How Audio Codecs Work Core principles: sampling, quantization, and compression. Encoding and decoding pipeline. Psychoacoustic models and bit rate control. 3. Applications and Use Cases Streaming platforms, telecommunication, and real time communication. Audio storage, broadcasting, and embedded systems. Use in AI audio systems (e.g., speech synthesis, neural codecs). 4. Challenges and Future Directions Trade offs between quality, latency, and efficiency. Emerging neural codecs (e.g., EnCodec, So"
+    },
+    {
+      "id": "blog-2.md-1",
+      "title": "Audio Codec",
+      "url": "/content/2.md",
+      "source": "blog",
+      "text": "ges and Future Directions Trade offs between quality, latency, and efficiency. Emerging neural codecs (e.g., EnCodec, SoundStream, Mimi). Future of adaptive and AI driven audio compression."
+    },
+    {
+      "id": "blog-3.md-0",
+      "title": "Model Compression",
+      "url": "/content/3.md",
+      "source": "blog",
+      "text": "1. Introduction to Model Compression What model compression is and why it’s important. The need for efficient models in edge and real time applications. Overview of trade offs between accuracy, size, and speed. 2. Core Techniques Pruning: Removing redundant weights or neurons. Quantization: Reducing numerical precision (e.g., FP32 → INT8/4). Knowledge Distillation: Transferring knowledge from large to small models. https://sankar1535.substack.com/p/bitnet distillation the 3 stage pipeline Low Rank and Sparse Representations: Efficient parameterization methods. 3. Applications and Use Cases Deployment on mobile, IoT, and embedded devices. Real time inference for speech, vision, and NLP tasks."
+    },
+    {
+      "id": "blog-3.md-1",
+      "title": "Model Compression",
+      "url": "/content/3.md",
+      "source": "blog",
+      "text": "ns and Use Cases Deployment on mobile, IoT, and embedded devices. Real time inference for speech, vision, and NLP tasks. Cloud cost reduction and energy efficient AI systems. 4. Challenges and Future Directions Maintaining accuracy after compression. Hardware aware compression and co design. Future trends: dynamic sparsity, adaptive quantization, and post training optimization."
+    },
+    {
+      "id": "blog-standalone-0",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second February 21, 2026 Autoregressive token generation creates a sequential bottleneck where each new token requires a full model pass, causing latency to scale with output length. Understanding this fundamental limitation is crucial for optimizing language model performance, especially in streaming applications. In streaming, this relationship is defined by several key performance factors that determine the user experience and system efficiency. 1. Sequential Dependency One by one Generation Autoregressive models must incorporate each newly generated token back into the context before predicting the next. This makes parallelizing the output phase impossible, unlike the initial prompt processing (prefill) which can be done in parallel. Latency Scaling Because of this loop, total response time is roughly the T"
+    },
+    {
+      "id": "blog-standalone-1",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "sing (prefill) which can be done in parallel. Latency Scaling Because of this loop, total response time is roughly the Time to First Token (TTFT) plus the product of the number of tokens and the Time Per Output Token (TPOT) . 2. Hardware Bottlenecks (Memory Bandwidth) I/O vs. Computation For small batch sizes common in streaming, the speed is limited by memory bandwidth —the time it takes to move model parameters from GPU memory to the processor—rather than actual math. KV Caching To mitigate this, systems use KV caching to store previously computed attention states, preventing redundant calculations as the sequence grows. 3. Perceived vs. Absolute Latency Streaming Benefit While autoregression is slow, streaming delivers partial results immediately. This drastically reduces perceived latency because the user sees progress (TTFT) even if the total generation takes a long time. Reading Sp"
+    },
+    {
+      "id": "blog-standalone-2",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "duces perceived latency because the user sees progress (TTFT) even if the total generation takes a long time. Reading Speed Optimal streaming targets are around 6–8 tokens per second , which matches or slightly exceeds human reading speed (approximately 250 words per minute). 4. Throughput Trade offs While streaming improves perceived latency, it comes with important considerations for overall system throughput and efficiency. Strategies to Mitigate Latency 1. Speculative Decoding (Draft Target) Speculative decoding is a technique where a smaller, faster \"draft\" model generates multiple candidate tokens in parallel, which are then verified by the larger target model in a single pass. Key Benefits: Achieves 2–3x speedup over standard autoregressive decoding Doesn't require retraining the base model Uses existing small models alongside large ones How It Works: The draft model generates K t"
+    },
+    {
+      "id": "blog-standalone-3",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "re retraining the base model Uses existing small models alongside large ones How It Works: The draft model generates K tokens, which the target model then evaluates in one forward pass. If any draft token doesn't match the target's probability distribution above a threshold, the entire sequence is rejected from that point forward. Trade offs: Requires fitting two models in GPU memory simultaneously Speedup varies significantly based on the draft model's accuracy Performance degrades when the draft and target models have different \"styles\" 2. Medusa / Multiple Token Prediction (MTP) Medusa attaches multiple prediction \"heads\" directly onto the base model, each predicting tokens 1, 2, 3… steps ahead simultaneously. Key Benefits: Achieves the fastest raw throughput (up to 3x on certain workloads) Only requires a single model in memory More consistent speedups than speculative decoding How I"
+    },
+    {
+      "id": "blog-standalone-4",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "3x on certain workloads) Only requires a single model in memory More consistent speedups than speculative decoding How It Works: Instead of using a separate draft model, Medusa adds lightweight \"heads\" to the existing model architecture that predict multiple future tokens in parallel from the same hidden state. Trade offs: Requires fine tuning the model with these additional heads Increases VRAM usage slightly (though less than two separate models) Needs model architecture changes, not a pure inference time optimization 3. EAGLE (Extrapolation Algorithm for Greater Language Model Efficiency) EAGLE uses a \"feature based\" draft model that predicts future tokens by looking at the hidden state evolution pattern, rather than just autoregressive token sequences. Key Benefits: Highest acceptance rate among speculative methods Better at handling complex logic and code More robust to domain shift"
+    },
+    {
+      "id": "blog-standalone-5",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "Highest acceptance rate among speculative methods Better at handling complex logic and code More robust to domain shifts How It Works: EAGLE trains a small autoregressive model that predicts not just the next token, but the next hidden state. This allows it to draft tokens based on semantic features rather than surface patterns. Trade offs: More complex implementation than standard speculation Requires specific feature plugin support in frameworks like TensorRT LLM Needs access to hidden states during inference 4. Lookahead / N Gram Caching Lookahead decoding leverages patterns in the prompt or previous output to predict the next several tokens without running inference. Key Benefits: Zero cost setup—no extra models or training required Works well for repetitive or structured text Particularly effective in Retrieval Augmented Generation (RAG) scenarios How It Works: The system maintains"
+    },
+    {
+      "id": "blog-standalone-6",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "uctured text Particularly effective in Retrieval Augmented Generation (RAG) scenarios How It Works: The system maintains an n gram cache of common patterns. When generating text, it checks if the current context matches a cached pattern and, if so, directly outputs the continuation. Trade offs: Limited speedup (usually 1.2–1.5x) Only effective on highly predictable or repetitive content Doesn't help with creative or novel generation 5. Low Frame Rate / \"Relaxed\" Tokens Common in multimodal tasks like speech synthesis or image generation , these methods relax the \"exact match\" requirement of speculative decoding. Tolerance Factor: Because speech or image tokens are often ambiguous (multiple tokens can represent the same sound/pixel), systems use a tolerance factor (β) to accept draft tokens that are \"close enough\" to the target's prediction. Impact: This increases the token acceptance rat"
+    },
+    {
+      "id": "blog-standalone-7",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "accept draft tokens that are \"close enough\" to the target's prediction. Impact: This increases the token acceptance rate and decoding throughput without perceptually degrading the quality of the final output. | | | | | Speculative Decoding | 2–3x speedup ; uses existing small models (e.g., Llama 70B + 1B). | Requires managing two models in GPU memory; high variance in speedup based on \"drafter\" accuracy. | General chat and reasoning where a smaller \"assistant\" version of the model exists. | | Medusa / MTP | Fastest raw throughput ; no second model needed. | Requires training/fine tuning custom \"heads\" onto your base model; increases VRAM usage slightly. | High volume production APIs where you have the resources to fine tune the model architecture. | | EAGLE | Highest acceptance rate ; better at handling complex logic. | More complex implementation than standard speculation; requires spe"
+    },
+    {
+      "id": "blog-standalone-8",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "cceptance rate ; better at handling complex logic. | More complex implementation than standard speculation; requires specific \"feature\" plugin support in TensorRT LLM. | Coding and math where standard small draft models often guess incorrectly. | | Lookahead / N Gram | Zero cost setup ; no extra models or training. | Limited speedup (usually ~1.2–1.5x); only works well on repetitive or highly structured text. | RAG applications or code generation where text is highly predictable/repetitive. | | Low Frame Rate / Relaxed | Maximum \"streaming\" fluidness ; overcomes jitter. | Potential for minor quality drift; harder to implement for pure text (mostly used in Audio/Video). | Real time voice assistants or multimodal streaming where \"exact\" tokens matter less than timing. | Decision Matrix: When to Use What? Choosing the right strategy depends on your hardware constraints, whether you can affo"
+    },
+    {
+      "id": "blog-standalone-9",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "ecision Matrix: When to Use What? Choosing the right strategy depends on your hardware constraints, whether you can afford to re train parts of your model, and the specific nature of your traffic. If you have a massive model and a small one available: Use Speculative Decoding (Draft Target). It's the standard \"off the shelf\" solution for vLLM and TensorRT LLM. If you are running on the edge (single GPU) and can't fit two models: Use Medusa or Lookahead . These keep the memory footprint small. If your priority is \"Human Like\" Real time Interaction: Combine Speculative Decoding with a Low Frame Rate buffer to ensure the text appears at a constant, comfortable reading speed rather than in \"bursts.\" If you are building for Code Generation: Use EAGLE . Code has strict syntax that \"dumb\" drafters often fail, but EAGLE's context aware drafting handles it much better. Understanding these fundame"
+    },
+    {
+      "id": "blog-standalone-10",
+      "title": "Autoregressive Token Generation: Why Streaming Latency Scales with Tokens Per Second",
+      "url": "/#/blog/autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second",
+      "source": "blog",
+      "text": "that \"dumb\" drafters often fail, but EAGLE's context aware drafting handles it much better. Understanding these fundamental constraints and optimization strategies enables you to make informed decisions when designing and deploying streaming language model applications. The key is matching the right technique to your specific use case, hardware constraints, and performance requirements."
+    },
+    {
+      "id": "substack-https://sankar1535.substack.com/p/bitnet-distillation-the-3-stage-pipeline",
+      "title": "BitNet Distillation: The 3-Stage Pipeline That Delivers Full-Precision LLM Performance at 1.58-bit Ultra-Low Quantization",
+      "url": "https://sankar1535.substack.com/p/bitnet-distillation-the-3-stage-pipeline",
+      "source": "substack",
+      "text": "BitNet Distillation: The 3 Stage Pipeline That Delivers Full Precision LLM Performance at 1.58 bit Ultra Low Quantization BitNet Distillation Paper: [Link] Github:"
+    },
+    {
+      "id": "substack-https://sankar1535.substack.com/p/moss-speech",
+      "title": "MOSS-Speech",
+      "url": "https://sankar1535.substack.com/p/moss-speech",
+      "source": "substack",
+      "text": "MOSS Speech Hidden State Divergence: The Imperative for Architectural Split Preserving Textual Integrity in Speech"
+    },
+    {
+      "id": "substack-https://sankar1535.substack.com/p/revolutionizing-text-to-speech-how",
+      "title": "Revolutionizing Text-to-Speech: How Differentiable Reward Optimization is Changing the Game",
+      "url": "https://sankar1535.substack.com/p/revolutionizing-text-to-speech-how",
+      "source": "substack",
+      "text": "Revolutionizing Text to Speech: How Differentiable Reward Optimization is Changing the Game This paper presents a Differentiable Reward Optimization method to enhance the performance of neural codec language model based text to speech systems by directly predicting rewards from neural"
+    },
+    {
+      "id": "project-0",
+      "title": "LLMCode",
+      "url": "https://github.com/sankar-mukherjee/LLMCode",
+      "source": "projects",
+      "text": "Hands on learning repo where I implement LLM and deep learning components from scratch and share focused code snippets."
+    },
+    {
+      "id": "project-1",
+      "title": "speech2speech_fullduplex",
+      "url": "https://github.com/sankar-mukherjee/speech2speech_fullduplex",
+      "source": "projects",
+      "text": "Full duplex speech to speech project focused on simultaneous turn handling and low latency conversational behavior."
+    },
+    {
+      "id": "project-2",
+      "title": "speech2speech_halfduplex",
+      "url": "https://github.com/sankar-mukherjee/speech2speech_halfduplex",
+      "source": "projects",
+      "text": "Half duplex speech to speech system for constrained local hardware experiments."
+    },
+    {
+      "id": "resume-0",
+      "title": "Resume Summary",
+      "url": "/#/resume",
+      "source": "resume",
+      "text": "Senior Machine Learning Engineer specializing in ASR, TTS, voice cloning, and speech security with end to end ownership from research and training to low latency production deployment."
+    },
+    {
+      "id": "resume-1",
+      "title": "Resume Experience - Omilia",
+      "url": "/#/resume",
+      "source": "resume",
+      "text": "Senior Machine Learning Engineer at Omilia (Aug 2023 to Oct 2025). Built production grade multilingual ASR and TTS systems, streaming low latency inference, speech security pipelines, and cloud native MLOps workflows."
+    },
+    {
+      "id": "resume-2",
+      "title": "Resume Experience - Oxolo",
+      "url": "/#/resume",
+      "source": "resume",
+      "text": "Machine Learning Engineer at Oxolo (Apr 2022 to Jul 2023). Worked on generative speech systems, voice cloning from minimal reference audio, speech emotion recognition, and ML CI/CD monitoring pipelines."
+    },
+    {
+      "id": "resume-3",
+      "title": "Resume Experience - GOODIX",
+      "url": "/#/resume",
+      "source": "resume",
+      "text": "Audio and Voice Algorithm Engineer at GOODIX (Apr 2021 to Mar 2022). Developed compact speech enhancement networks and applied pruning and INT8 quantization for mobile deployment constraints."
+    },
+    {
+      "id": "resume-4",
+      "title": "Resume Experience - DefinedCrowd",
+      "url": "/#/resume",
+      "source": "resume",
+      "text": "Speech Scientist at DefinedCrowd (Sep 2019 to Mar 2021). Developed multilingual acoustic models, speech processing systems for noisy environments, and production aligned data pipelines."
+    },
+    {
+      "id": "resume-5",
+      "title": "Resume Skills",
+      "url": "/#/resume",
+      "source": "resume",
+      "text": "Skills include ASR, TTS, Speech LLMs, Whisper, RNNT, diffusion models, model evaluation, PyTorch, TensorFlow, Docker, distributed training, and streaming inference."
+    }
+  ]
+}

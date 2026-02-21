@@ -1,154 +1,118 @@
-import React, { useState, useEffect } from 'react';
-import { IndexEntry } from '../types';
-import { IndexItem } from './IndexItem';
-import { BlogTopic } from './BlogTopic';
+import React, { useEffect, useMemo, useState } from 'react';
+import { marked } from 'marked';
 
-// Helper to parse metadata from a filename like "1-1-1.md"
-const parseFilename = (filename: string): { id: string } => {
-  const id = filename.replace(/\.md$/, '');
-  if (!id) throw new Error(`Invalid filename format: ${filename}`);
-  return { id };
-};
+const POST_SLUG = 'autoregressive-token-generation-why-streaming-latency-scales-with-tokens-per-second';
+const POST_URL = '/content/blog-post.md';
 
-// Helper to parse the 'title' from YAML front matter
-const parseFrontMatter = (markdown: string): { title: string | null } => {
-  const frontMatterRegex = /^\s*---\s*([\s\S]*?)\s*---/;
-  const match = frontMatterRegex.exec(markdown);
-  if (!match) return { title: null };
-  const titleMatch = /^\s*title:\s*(.*)/m.exec(match[1]);
-  const title = titleMatch ? titleMatch[1].trim().replace(/^['"]|['"]$/g, '') : null;
-  return { title };
+const getCurrentBlogSlug = (): string | null => {
+  const hash = window.location.hash || '';
+  const match = hash.match(/^#\/blog\/([^/?#]+)/);
+  return match ? decodeURIComponent(match[1]) : null;
 };
 
 export const Blog: React.FC = () => {
-  const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
-  const [blogIndexData, setBlogIndexData] = useState<IndexEntry[]>([]);
+  const [activeSlug, setActiveSlug] = useState<string | null>(() => getCurrentBlogSlug());
+  const [postMarkdown, setPostMarkdown] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchAndBuildTree = async () => {
+    const onHashChange = () => {
+      setActiveSlug(getCurrentBlogSlug());
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  useEffect(() => {
+    const loadPost = async () => {
       try {
         setIsLoading(true);
         setError(null);
-
-        // 1. Fetch manifest of all content files
-        const manifestResponse = await fetch('/content/manifest.json');
-        if (!manifestResponse.ok) throw new Error('Failed to load blog manifest.');
-        const filenames: string[] = await manifestResponse.json();
-
-        // 2. Fetch each markdown file to read its front matter for the title
-        const fileDataPromises = filenames.map(async (filename) => {
-          const res = await fetch(`/content/${filename}`);
-          if (!res.ok) throw new Error(`Failed to fetch ${filename}`);
-          const text = await res.text();
-          const { title } = parseFrontMatter(text);
-          const { id } = parseFilename(filename);
-          if (!title) throw new Error(`Missing title in front matter for ${filename}`);
-          
-          return {
-            id,
-            title,
-            content: `/content/${filename}`,
-          };
-        });
-        const flatBlogData = await Promise.all(fileDataPromises);
-
-        // 3. Build the nested tree structure from the flat list of files
-        const nodeMap = new Map<string, IndexEntry>();
-        flatBlogData.forEach(item => {
-          nodeMap.set(item.id, { ...item, children: [] });
-        });
-
-        const tree: IndexEntry[] = [];
-        flatBlogData.forEach(item => {
-          const lastDashIndex = item.id.lastIndexOf('-');
-          const parentId = lastDashIndex > -1 ? item.id.substring(0, lastDashIndex) : null;
-          const currentNode = nodeMap.get(item.id)!;
-
-          if (parentId && nodeMap.has(parentId)) {
-            const parentNode = nodeMap.get(parentId)!;
-            parentNode.children = parentNode.children || [];
-            parentNode.children.push(currentNode);
-          } else {
-            tree.push(currentNode);
-          }
-        });
-        
-        // Sort children by ID to maintain order
-        const sortChildren = (nodes: IndexEntry[]) => {
-            nodes.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
-            nodes.forEach(node => {
-                if (node.children) sortChildren(node.children);
-            });
-        };
-        sortChildren(tree);
-
-        setBlogIndexData(tree);
-
-      } catch (err) {
-        console.error(err);
-        setError('Could not load blog content. Please try again later.');
+        const res = await fetch(POST_URL);
+        if (!res.ok) throw new Error(`Failed to load post (${res.status})`);
+        const text = await res.text();
+        setPostMarkdown(text);
+      } catch {
+        setError('Could not load blog post.');
       } finally {
         setIsLoading(false);
       }
     };
-
-    fetchAndBuildTree();
+    loadPost();
   }, []);
 
-  const findTopic = (nodes: IndexEntry[], id: string): IndexEntry | null => {
-    for (const node of nodes) {
-      if (node.id === id) return node;
-      if (node.children) {
-        const found = findTopic(node.children, id);
-        if (found) return found;
-      }
-    }
-    return null;
-  };
+  const post = useMemo(() => {
+    const lines = postMarkdown.split('\n');
+    const title = (lines.find((line) => line.startsWith('# ')) || '# Blog Post').replace(/^#\s+/, '').trim();
+    const dateLine = lines.find((line) => /^\*.*\*$/.test(line.trim())) || '*Unknown date*';
+    const date = dateLine.replace(/^\*|\*$/g, '').trim();
 
-  const selectedTopic = selectedTopicId ? findTopic(blogIndexData, selectedTopicId) : null;
+    const contentWithoutHeader = postMarkdown
+      .replace(/^# .*\n+/, '')
+      .replace(/^\*.*\*\n+/, '');
 
-  if (selectedTopic && selectedTopic.content) {
+    const excerptMatch = contentWithoutHeader.match(/([^\n].*?)(\n\s*\n|$)/s);
+    const excerpt = excerptMatch ? excerptMatch[1].replace(/\s+/g, ' ').trim() : '';
+    const html = marked.parse(contentWithoutHeader);
+
+    return {
+      slug: POST_SLUG,
+      title,
+      date,
+      excerpt,
+      html,
+    };
+  }, [postMarkdown]);
+
+  if (isLoading) {
+    return <div className="fade-in"><p>Loading blog post...</p></div>;
+  }
+
+  if (error) {
+    return <div className="fade-in"><p className="text-red-500">{error}</p></div>;
+  }
+
+  const isDetailPage = activeSlug === post.slug;
+
+  if (isDetailPage) {
     return (
-      <BlogTopic
-        selectedTopic={selectedTopic}
-        onBack={() => setSelectedTopicId(null)}
-      />
+      <div className="fade-in space-y-4">
+        <button
+          onClick={() => {
+            window.location.hash = '#/blog';
+          }}
+          className="text-sm font-mono text-black dark:text-white hover:underline"
+        >
+          &larr; Back to Blog
+        </button>
+        <article className="prose dark:prose-invert max-w-none">
+          <p className="text-sm text-gray-500 dark:text-slate">{post.date}</p>
+          <h1>{post.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        </article>
+      </div>
     );
   }
 
-  const renderContent = () => {
-    if (isLoading) {
-      return <p className="text-center">Loading blog index...</p>;
-    }
-
-    if (error) {
-      return <p className="text-center text-red-500">{error}</p>;
-    }
-
-    return (
-      <div className="flex flex-col">
-        {blogIndexData.map(entry => (
-          <IndexItem 
-            key={entry.id} 
-            entry={entry} 
-            onSelectTopic={setSelectedTopicId} 
-            level={0}
-            activeId={null} 
-          />
-        ))}
-      </div>
-    );
-  };
-
   return (
-    <div className="fade-in">
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-lightest-slate mb-8 font-sans">
-          Blog & Concepts
+    <div className="fade-in space-y-6">
+      <h2 className="text-3xl font-bold text-gray-900 dark:text-lightest-slate font-sans">
+        Blog
       </h2>
-      {renderContent()}
+
+      <article className="rounded-xl bg-[#0b0f16] px-5 py-4 sm:px-6 sm:py-5">
+        <p className="text-xl text-slate">{post.date}</p>
+        <button
+          onClick={() => {
+            window.location.hash = `#/blog/${post.slug}`;
+          }}
+          className="mt-2 text-left text-2xl font-semibold text-[#40a9e8] hover:underline"
+        >
+          {post.title}
+        </button>
+        <p className="mt-3 text-white text-[15px] leading-relaxed">{post.excerpt}</p>
+      </article>
     </div>
   );
 };

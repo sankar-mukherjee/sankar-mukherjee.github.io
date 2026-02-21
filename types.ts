@@ -7,6 +7,7 @@ export interface IndexEntry {
 
 export enum Page {
   About = 'about',
+  Resume = 'resume',
   Blog = 'blog',
   Projects = 'projects',
   LLMs = 'llms',

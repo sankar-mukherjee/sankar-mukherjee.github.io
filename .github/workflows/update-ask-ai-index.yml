@@ -1,0 +1,44 @@
+name: Update Ask AI Index
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh Substack cache
+        run: npm run substack:fetch
+
+      - name: Build Ask AI index
+        run: npm run askai:index
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: sankar-mukherjee
+          GITHUB_MAX_REPOS: 100
+
+      - name: Commit changes if needed
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/substack.json public/knowledge-base/ask-ai-index.json
+          git commit -m "Update Ask AI index cache"
+          git push

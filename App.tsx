@@ -1,12 +1,16 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { AskAIWidget } from './components/AskAIWidget';
 import { Page } from './types';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
 
 const About = lazy(() =>
   import('./components/About').then((m) => ({ default: m.About }))
+);
+const Resume = lazy(() =>
+  import('./components/Resume').then((m) => ({ default: m.Resume }))
 );
 const Blog = lazy(() =>
   import('./components/Blog').then((m) => ({ default: m.Blog }))
@@ -20,14 +24,21 @@ const LLMsFromScratch = lazy(() =>
 const MLCode = lazy(() =>
   import('./components/MLCode').then((m) => ({ default: m.MLCode }))
 );
-
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<Page>(Page.About);
 
   useEffect(() => {
     const syncFromHash = () => {
       const hash = window.location.hash || '';
-      if (hash.startsWith('#/llms')) {
+      if (hash.startsWith('#/resume')) {
+        setActivePage(Page.Resume);
+      } else if (hash.startsWith('#/blog')) {
+        setActivePage(Page.Blog);
+      } else if (hash.startsWith('#/projects')) {
+        setActivePage(Page.Projects);
+      } else if (hash.startsWith('#/mlcode')) {
+        setActivePage(Page.MLCode);
+      } else if (hash.startsWith('#/llms')) {
         setActivePage(Page.LLMs);
       }
     };
@@ -43,6 +54,8 @@ const App: React.FC = () => {
 
   const renderPage = () => {
     switch (activePage) {
+      case Page.Resume:
+        return <Resume />;
       case Page.Blog:
         return <Blog />;
       case Page.Projects:
@@ -76,6 +89,7 @@ const App: React.FC = () => {
           </Suspense>
         </div>
       </main>
+      <AskAIWidget />
       <Footer />
     </div>
   );
